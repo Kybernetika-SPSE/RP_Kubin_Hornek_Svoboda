@@ -1,4 +1,31 @@
 from machine import Pin
+import communication as comm
+
+#region Communication
+class Endpoint:
+    def __init__(self, name, IP, Port, BufferSize):
+        self.name = name #adding name to identify endpoints
+        self.IP = IP #endpoint's IP address
+        self.Port = Port #endpoint's port
+        self.BufferSize = BufferSize #BufferSize
+
+Endpoints = []
+
+Endpoints.append(Endpoint("NTB-5521", "192.168.100.53", 9999, 1024))
+
+#endregion
+
+
+
+
+
+#region Motors
+
+def sendMessage():
+    message = []
+    for i in range(len(Achsen)):
+        message.append(str(Achsen[i]))
+    comm.sendMessage(str(message))
 
 class Achse:
     def __init__(self, name, axisNumber, enPin, dirPin, stepPin, homingSensorPin, stepsPerRevolution, maxDegree, microstepping):
@@ -12,6 +39,10 @@ class Achse:
         self.maxDegree = maxDegree #max degree in axis
         self.microstepping = microstepping #microstepping value like full-step or half-step
         self.oneStep = 360/((stepsPerRevolution/microstepping) * 2) #angle change by one step
+        self.movingStatus = 0
+
+    def __str__(self):
+        return f"{self.name},{self.axisNumber},{self.enPin},{self.dirPin},{self.stepPin},{self.homingSensorPin},{self.stepsPerRevolution},{self.maxDegree},{self.microstepping},{self.stepPin}, {self.pos}, {self.desiredPos}" 
 
     #current positon related things
     def setPos(self, pos):
@@ -43,10 +74,17 @@ class Achse:
         return self.desiredPos
     
     def setMovingStatus(self, numb):
+        if (numb != self.movingStatus):
+            sendMessage()
+                
         self.movingStatus = numb #0 - not started, 1 - moving, 2 - done
+        #comm.sendMessage(self.name)
+        
 
     def getMovingStatus(self):
         return self.movingStatus #0 - not started, 1 - moving, 2 - done
+    
+
     
 
 Achsen = []
@@ -55,12 +93,18 @@ Achsen = []
 Achsen.append(Achse("A1", 1, 2, 0, 1, 6, 200, 90, 1/4))
 Achsen[0].setPos(0)
 Achsen[0].setDesiredPos(0)
-Achsen[0].setMovingStatus(0)
 Achsen[0].setHomedStatus(0)
+Achsen[0].setMovingStatus(0)
 
 #A2
 Achsen.append(Achse("A2", 2, 5, 3, 4, 6, 200, 90, 1/4))
 Achsen[1].setPos(0)
 Achsen[1].setDesiredPos(0)
-Achsen[0].setMovingStatus(0)
 Achsen[1].setHomedStatus(0)
+Achsen[1].setMovingStatus(0)
+
+
+
+
+
+#endregion

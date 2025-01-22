@@ -1,6 +1,7 @@
 from machine import Pin
 from time import sleep
 import config
+import communication as comm
 
  
 def step(achse, direction):
@@ -50,9 +51,7 @@ def home(achse):
 #config.Achsen[0].setDesiredPos(90)
 #config.Achsen[1].setDesiredPos(90)
 
-
 while True:
-    
          
     if ((config.Achsen[0].getMovingStatus() == 2) and (config.Achsen[1].getMovingStatus() == 2)):
         positions = str(input("Enter new desired positions in following format: A1,A2: "))
