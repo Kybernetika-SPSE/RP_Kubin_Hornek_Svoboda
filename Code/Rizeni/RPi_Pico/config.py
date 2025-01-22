@@ -42,15 +42,25 @@ class Achse:
     def getDesiredPos(self):
         return self.desiredPos
     
+    def setMovingStatus(self, numb):
+        self.movingStatus = numb #0 - not started, 1 - moving, 2 - done
+
+    def getMovingStatus(self):
+        return self.movingStatus #0 - not started, 1 - moving, 2 - done
+    
 
 Achsen = []
 
 #A1
 Achsen.append(Achse("A1", 1, 2, 0, 1, 6, 200, 90, 1/4))
 Achsen[0].setPos(0)
+Achsen[0].setDesiredPos(0)
+Achsen[0].setMovingStatus(0)
 Achsen[0].setHomedStatus(0)
 
 #A2
-Achsen.append(Achse("A2", 2, 5, 3, 4, 22,200, 90, 1/4))
+Achsen.append(Achse("A2", 2, 5, 3, 4, 6, 200, 90, 1/4))
 Achsen[1].setPos(0)
+Achsen[1].setDesiredPos(0)
+Achsen[0].setMovingStatus(0)
 Achsen[1].setHomedStatus(0)
