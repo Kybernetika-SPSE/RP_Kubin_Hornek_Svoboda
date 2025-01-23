@@ -11,7 +11,7 @@ class Endpoint:
 
 Endpoints = []
 
-Endpoints.append(Endpoint("NTB-5521", "192.168.100.53", 9999, 1024))
+Endpoints.append(Endpoint("NTB-5521", "192.168.100.53", 7777, 1024))
 
 #endregion
 
