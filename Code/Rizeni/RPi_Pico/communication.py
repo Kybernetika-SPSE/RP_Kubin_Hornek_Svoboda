@@ -1,5 +1,6 @@
 import socket
 import config
+from time import sleep
 
 def sendMessage(MESSAGE):
     TCP_IP = config.Endpoints[0].IP
@@ -8,15 +9,29 @@ def sendMessage(MESSAGE):
     #MESSAGE = "Hello, World!"
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((TCP_IP, TCP_PORT))
-    s.send(MESSAGE)
-    data = 0
-    data = s.recv(BUFFER_SIZE)
+    try:
+        s.connect((TCP_IP, TCP_PORT))
+        s.send(MESSAGE)
+        data = 0
+        data = s.recv(BUFFER_SIZE)
+        print("data sent")
+    except Exception as e:
+        print(str(e))
+        print("data not sent")
+    finally:
+        s.close()     
+      
 
-    s.close()
+
+
+
+
+
+    #s.close()
 
     #print(config.Endpoints[0].name)
     #print(config.Endpoints[0].IP)
     #print(config.Endpoints[0].Port)
     #print(config.Endpoints[0].BufferSize)
-    print(data)
+
+#sendMessage("aa")

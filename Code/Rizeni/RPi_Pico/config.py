@@ -97,7 +97,7 @@ Achsen[0].setHomedStatus(0)
 Achsen[0].setMovingStatus(0)
 
 #A2
-Achsen.append(Achse("A2", 2, 5, 3, 4, 6, 200, 90, 1/4))
+Achsen.append(Achse("A2", 2, 5, 3, 4, 6, 200, 108, 1/4))
 Achsen[1].setPos(0)
 Achsen[1].setDesiredPos(0)
 Achsen[1].setHomedStatus(0)
