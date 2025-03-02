@@ -1,1 +1,0 @@
-#tady zatim nic neni, veskery kod je v testik
