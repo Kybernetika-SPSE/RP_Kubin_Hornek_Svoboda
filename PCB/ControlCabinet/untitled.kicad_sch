@@ -1,0 +1,19 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "e632b332-4b29-4e42-906f-5ecc2fab525e")
+	(paper "A4")
+	(lib_symbols)
+	(hierarchical_label "ggg"
+		(shape input)
+		(at 76.2 87.63 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5ce3b126-8e9b-4451-a63d-0859dc0fb447")
+	)
+)
