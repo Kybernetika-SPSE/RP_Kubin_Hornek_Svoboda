@@ -18,6 +18,7 @@ def connect(ssid, password):
         led.value(0)
         sleep(0.5)
     print("Got this IP address: " + wlan.ifconfig()[0])
-
+    led.value(1)
 
 led.value(1)
+#connect("ssid", "pass")

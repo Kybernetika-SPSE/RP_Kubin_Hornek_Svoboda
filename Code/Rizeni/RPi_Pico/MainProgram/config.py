@@ -2,12 +2,6 @@ from machine import Pin
 
 #region Motors
 
-def sendMessage():
-    message = []
-    for i in range(len(Achsen)):
-        message.append(str(Achsen[i]))
-    #comm.sendMessage(str(message))
-
 class Achse:
     def __init__(self, name, axisNumber, enPin, dirPin, stepPin, homingSensorPin, stepsPerRevolution, maxDegree, microstepping):
         self.name = name #adding name to identify axes
@@ -55,13 +49,9 @@ class Achse:
         return self.desiredPos
     
     def setMovingStatus(self, numb):
-        if (numb != self.movingStatus):
-            sendMessage()
-                
         self.movingStatus = numb #0 - not started, 1 - moving, 2 - done
         #comm.sendMessage(self.name)
         
-
     def getMovingStatus(self):
         return self.movingStatus #0 - not started, 1 - moving, 2 - done
     
@@ -71,14 +61,37 @@ class Achse:
 Achsen = []
 
 #A1
-Achsen.append(Achse("A1", 1, 2, 0, 1, 6, 200, 90, 1/4))
+Achsen.append(Achse("A1", 1,
+                    0, #enPin
+                    1, #dirPin
+                    2, #stepPin
+                    3, #homingSensorPin
+                    200, #stepsPerRevolution
+                    90, #maxDegree
+                    1/4)) #microstepping
 Achsen[0].setPos(0)
 Achsen[0].setDesiredPos(0)
 Achsen[0].setHomedStatus(0)
 Achsen[0].setMovingStatus(0)
 
 #A2
-Achsen.append(Achse("A2", 2, 5, 3, 4, 6, 200, 180, 1/4))
+#Achsen.append(Achse("A2", 2,
+#                    6, #enPin
+#                    7, #dirPin
+#                    8, #stepPin
+#                    9, #homingSensorPin
+#                    200, #stepsPerRevolution
+#                    180, #maxDegree
+#                    1/4)) #microstepping
+
+Achsen.append(Achse("A2", 2,
+                    22, #enPin
+                    26, #dirPin
+                    27, #stepPin
+                    28, #homingSensorPin
+                    200, #stepsPerRevolution
+                    180, #maxDegree
+                    1/4)) #microstepping
 Achsen[1].setPos(0)
 Achsen[1].setDesiredPos(0)
 Achsen[1].setHomedStatus(0)
