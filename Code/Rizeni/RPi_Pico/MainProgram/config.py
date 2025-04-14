@@ -3,7 +3,7 @@ from machine import Pin
 #region Motors
 
 class Achse:
-    def __init__(self, name, axisNumber, enPin, dirPin, stepPin, homingSensorPin, stepsPerRevolution, maxDegree, microstepping):
+    def __init__(self, name, axisNumber, enPin, dirPin, stepPin, homingSensorPin, stepsPerRevolution, maxDegree, microstepping, enabled = 0):
         self.name = name #adding name to identify axes
         self.axisNumber = axisNumber #adding axis number
         self.enPin = Pin(enPin, Pin.OUT) #enable pin
@@ -15,6 +15,7 @@ class Achse:
         self.microstepping = microstepping #microstepping value like full-step or half-step
         self.oneStep = 360/((stepsPerRevolution/microstepping) * 2) #angle change by one step
         self.movingStatus = 0
+        self.enabled = enabled
 
     def __str__(self):
         return f"{self.name},{self.axisNumber},{self.enPin},{self.dirPin},{self.stepPin},{self.homingSensorPin},{self.stepsPerRevolution},{self.maxDegree},{self.microstepping},{self.stepPin}, {self.pos}, {self.desiredPos}" 
@@ -68,36 +69,101 @@ Achsen.append(Achse("A1", 1,
                     3, #homingSensorPin
                     200, #stepsPerRevolution
                     90, #maxDegree
-                    1/4)) #microstepping
+                    1/4, #microstepping
+                    1)) #enabled
 Achsen[0].setPos(0)
 Achsen[0].setDesiredPos(0)
 Achsen[0].setHomedStatus(0)
 Achsen[0].setMovingStatus(0)
 
 #A2
-#Achsen.append(Achse("A2", 2,
-#                    6, #enPin
-#                    7, #dirPin
-#                    8, #stepPin
-#                    9, #homingSensorPin
-#                    200, #stepsPerRevolution
-#                    180, #maxDegree
-#                    1/4)) #microstepping
-
 Achsen.append(Achse("A2", 2,
-                    22, #enPin
-                    26, #dirPin
-                    27, #stepPin
-                    28, #homingSensorPin
+                    6, #enPin
+                    7, #dirPin
+                    8, #stepPin
+                    9, #homingSensorPin
                     200, #stepsPerRevolution
                     180, #maxDegree
-                    1/4)) #microstepping
+                    1/4, #microstepping
+                    1)) #enabled
+
+
 Achsen[1].setPos(0)
 Achsen[1].setDesiredPos(0)
 Achsen[1].setHomedStatus(0)
 Achsen[1].setMovingStatus(0)
 
 
+#A3
+Achsen.append(Achse("A3", 3,
+                    10, #enPin
+                    11, #dirPin
+                    12, #stepPin
+                    13, #homingSensorPin
+                    200, #stepsPerRevolution
+                    180, #maxDegree
+                    1/4, #microstepping
+                    0)) #enabled
+
+
+Achsen[2].setPos(0)
+Achsen[2].setDesiredPos(0)
+Achsen[2].setHomedStatus(0)
+Achsen[2].setMovingStatus(0)
+
+
+#A4
+Achsen.append(Achse("A4", 4,
+                    14, #enPin
+                    15, #dirPin
+                    16, #stepPin
+                    17, #homingSensorPin
+                    200, #stepsPerRevolution
+                    180, #maxDegree
+                    1/4, #microstepping
+                    0)) #enabled
+
+
+Achsen[3].setPos(0)
+Achsen[3].setDesiredPos(0)
+Achsen[3].setHomedStatus(0)
+Achsen[3].setMovingStatus(0)
+
+
+#A5
+Achsen.append(Achse("A5", 5,
+                    18, #enPin
+                    19, #dirPin
+                    20, #stepPin
+                    21, #homingSensorPin
+                    200, #stepsPerRevolution
+                    180, #maxDegree
+                    1/4, #microstepping
+                    0)) #enabled
+
+
+Achsen[4].setPos(0)
+Achsen[4].setDesiredPos(0)
+Achsen[4].setHomedStatus(0)
+Achsen[4].setMovingStatus(0)
+
+
+#A6
+Achsen.append(Achse("A6", 6,
+                    22, #enPin
+                    26, #dirPin
+                    27, #stepPin
+                    28, #homingSensorPin
+                    200, #stepsPerRevolution
+                    180, #maxDegree
+                    1/4, #microstepping
+                    0)) #enabled
+
+
+Achsen[5].setPos(0)
+Achsen[5].setDesiredPos(0)
+Achsen[5].setHomedStatus(0)
+Achsen[5].setMovingStatus(0)
 
 
 
