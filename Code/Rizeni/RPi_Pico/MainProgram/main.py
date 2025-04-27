@@ -1,4 +1,3 @@
-#tady zatim nic neni, veskery kod je v testik
 from machine import Pin
 import machine
 from time import sleep
@@ -36,23 +35,28 @@ def spinMotor(achse, desPos):
         step(achse, -1)
 
 
+
 def home(achse):
+    tmp = 0
     while (not config.Achsen[achse-1].getHomedStatus()):
         tmp = config.Achsen[achse-1].getHomingSensorValue()
 
         print("Homuji osu " + config.Achsen[achse-1].name)
 
         if (not config.Achsen[achse-1].getHomingSensorValue()): #if not staying on sensor
-            step(achse, -1)        
+            step(achse, -1)
+                   
         else:
             step(achse, 1)
         
         sleep(0.0125)
 
         if (tmp != config.Achsen[achse-1].getHomingSensorValue()): #homing finished
-            config.Achsen[achse-1].setHomedStatus(True)
-            config.Achsen[achse-1].setPos(0)
-            break
+                config.Achsen[achse-1].setHomedStatus(True)
+                config.Achsen[achse-1].setPos(0)
+                break 
+
+        
 
 
 #config.Achsen[0].setDesiredPos(90)
@@ -143,13 +147,13 @@ def control_thread():
                             config.Achsen[i].setMovingStatus(1)
                         else:
                             config.Achsen[i].setMovingStatus(2)
-                            #print(config.Achsen[i].name + ": " + str(config.Achsen[i].getPos()))
+                            print(config.Achsen[i].name + ": " + str(config.Achsen[i].getPos()))
                     else:
                         #print("osa " + str(i+1) + " neni homed")
                         if (homeAchseX[i] == 1):
                             print("budu ji ale homovat")
                             home(i+1)
-                    sleep(0.001)
+                    #sleep(0.001)
 
 
 

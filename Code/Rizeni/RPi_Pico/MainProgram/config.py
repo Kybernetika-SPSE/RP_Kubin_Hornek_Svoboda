@@ -1,7 +1,6 @@
 from machine import Pin
 
 #region Motors
-
 class Achse:
     def __init__(self, name, axisNumber, enPin, dirPin, stepPin, homingSensorPin, stepsPerRevolution, maxDegree, microstepping, enabled = 0):
         self.name = name #adding name to identify axes
@@ -56,7 +55,6 @@ class Achse:
     def getMovingStatus(self):
         return self.movingStatus #0 - not started, 1 - moving, 2 - done
     
-
     
 
 Achsen = []
@@ -67,9 +65,9 @@ Achsen.append(Achse("A1", 1,
                     1, #dirPin
                     2, #stepPin
                     3, #homingSensorPin
-                    200, #stepsPerRevolution
+                    10745, #stepsPerRevolution
                     90, #maxDegree
-                    1/4, #microstepping
+                    2, #microstepping
                     1)) #enabled
 Achsen[0].setPos(0)
 Achsen[0].setDesiredPos(0)
@@ -82,9 +80,9 @@ Achsen.append(Achse("A2", 2,
                     7, #dirPin
                     8, #stepPin
                     9, #homingSensorPin
-                    200, #stepsPerRevolution
-                    180, #maxDegree
-                    1/4, #microstepping
+                    10745, #stepsPerRevolution
+                    90, #maxDegree
+                    2, #microstepping
                     1)) #enabled
 
 
@@ -100,9 +98,9 @@ Achsen.append(Achse("A3", 3,
                     11, #dirPin
                     12, #stepPin
                     13, #homingSensorPin
-                    200, #stepsPerRevolution
-                    180, #maxDegree
-                    1/4, #microstepping
+                    10745, #stepsPerRevolution
+                    90, #maxDegree
+                    2, #microstepping
                     0)) #enabled
 
 
